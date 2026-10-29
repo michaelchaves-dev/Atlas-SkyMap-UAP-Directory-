@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ATLAS SkyMap — UAP Register &amp; Directory</title>
+<meta name="description" content="ATLAS SkyMap is a timestamped, sourced register of anomalous aerial activity — mapped, correlated against satellites, aircraft and space weather, and explained where the evidence explains it.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="mark" aria-hidden="true">◉</div>
+    <div>
+      <h1>ATLAS <span>SkyMap</span></h1>
+      <p class="tagline">UAP Register &amp; Directory</p>
+    </div>
+  </div>
+  <span class="status-pill">Public preview — in active development</span>
+</header>
+
+<main>
+  <section class="hero">
+    <h2>The sky, on the record.</h2>
+    <p>Every entry in this register is timestamped, placed on the map, and tied to a named source — government releases, official files, or documented case archives. Where an entry can be explained — a satellite train, a balloon, an aircraft — we say so, and show the correlation. Where it can&rsquo;t, we say that too, and nothing more.</p>
+    <div class="stats" id="stats" aria-live="polite"></div>
+  </section>
+
+  <section class="layout">
+    <div class="panel map-panel">
+      <div class="panel-head">
+        <h3>Sky Map</h3>
+        <p>Select a pin — or an entry in the register — to read the full record.</p>
+      </div>
+      <div id="map" role="application" aria-label="Map of registered sightings"></div>
+      <div class="legend">
+        <span><i class="dot unresolved"></i>Unresolved</span>
+        <span><i class="dot government"></i>Government released</span>
+        <span><i class="dot mixed"></i>Mixed evidence</span>
+        <span><i class="dot explained"></i>Explained</span>
+        <span><i class="dot pending"></i>Your pending report</span>
+      </div>
+    </div>
+
+    <aside class="panel detail-panel" id="detail" aria-live="polite">
+      <p class="empty">No entry selected yet. Pick a pin on the map to open its record.</p>
+    </aside>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h3>The Register</h3>
+      <p>Search and filter the directory. Explained entries stay in — showing our work is the point.</p>
+    </div>
+    <div class="controls">
+      <label>Search <input id="q" type="search" placeholder="Place, shape, source…"></label>
+      <label>Status
+        <select id="statusFilter">
+          <option value="">All statuses</option>
+          <option>Unresolved</option>
+          <option>Government released</option>
+          <option>Mixed evidence</option>
+          <option>Explained</option>
+        </select>
+      </label>
+      <label>Source type
+        <select id="sourceFilter">
+          <option value="">All sources</option>
+          <option>Government</option>
+          <option>Government file</option>
+          <option>Case archive</option>
+          <option>Satellite record</option>
+          <option>Multiple</option>
+        </select>
+      </label>
+    </div>
+    <div id="register" class="register"></div>
+    <p id="noResults" class="empty" hidden>No entries match those filters.</p>
+  </section>
+
+  <section class="grid-2">
+    <div class="panel">
+      <div class="panel-head"><h3>How verification works</h3></div>
+      <ol class="method">
+        <li><strong>Timestamp first.</strong> An entry with no reliable date, time and place does not enter the register.</li>
+        <li><strong>Satellite correlation.</strong> The time and position are checked against published satellite tracks — most &ldquo;trains of lights&rdquo; resolve here.</li>
+        <li><strong>Aircraft &amp; balloons.</strong> Flight activity and known balloon transits are checked next.</li>
+        <li><strong>Space weather.</strong> Solar and geomagnetic conditions from NOAA are noted for light-phenomenon reports.</li>
+        <li><strong>Honest label.</strong> Explained, Mixed evidence, Government released, or Unresolved — and the correlation note says exactly what was checked.</li>
+      </ol>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <h3>Report a sighting</h3>
+        <p>In this preview, your report is added to your map as <em>Pending review</em> and saved only in this browser — nothing is transmitted yet.</p>
+      </div>
+      <form id="reportForm">
+        <label>Date <input name="date" type="date" required></label>
+        <label>Location <input name="location" type="text" placeholder="Town, State, Country" required></label>
+        <div class="row">
+          <label>Latitude <input name="lat" type="number" step="any" min="-90" max="90" placeholder="42.98"></label>
+          <label>Longitude <input name="lng" type="number" step="any" min="-180" max="180" placeholder="-70.95"></label>
+        </div>
+        <label>Shape / appearance <input name="shape" type="text" placeholder="Lights, disc, triangle…" required></label>
+        <label>What you saw <textarea name="summary" rows="3" required placeholder="Time, duration, movement, sound — facts first."></textarea></label>
+        <button type="submit">Add to the map — pending review</button>
+        <p class="form-note" id="formNote" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h3>Directory — where else to report &amp; research</h3>
+      <p>ATLAS sits alongside the established channels, not instead of them.</p>
+    </div>
+    <div class="directory">
+      <a href="https://www.aaro.mil/" target="_blank" rel="noopener"><strong>AARO</strong><span>US All-domain Anomaly Resolution Office — official reporting for service members &amp; federal personnel</span></a>
+      <a href="https://nuforc.org/" target="_blank" rel="noopener"><strong>NUFORC</strong><span>National UFO Reporting Center — the long-running public sighting database</span></a>
+      <a href="https://mufon.com/" target="_blank" rel="noopener"><strong>MUFON</strong><span>Mutual UFO Network — field-investigator case network</span></a>
+      <a href="https://enigmalabs.io/" target="_blank" rel="noopener"><strong>Enigma Labs</strong><span>Modern sighting-report app and alerts network</span></a>
+    </div>
+  </section>
+
+  <section class="panel roadmap">
+    <div class="panel-head"><h3>Where this goes next</h3></div>
+    <ul>
+      <li><strong>Live layers</strong> — real-time satellite passes (CelesTrak) and NOAA space weather over the same map.</li>
+      <li><strong>Reviewed submissions</strong> — public reports held in a moderation queue before they join the register.</li>
+      <li><strong>Observer &amp; Operator accounts</strong> — saved regions, alerts when activity is registered near you, and full correlation detail.</li>
+      <li><strong>Camera network ingestion</strong> — public sky and transit cameras catalogued as watch sources, metadata first.</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <p><strong>Subtract Architect Studios™</strong> — Copyright © 2026 Michael F. Chaves. See <a href="IP_NOTICE.md">IP Notice</a>. Historical entries summarise public records; source named on each entry.</p>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
