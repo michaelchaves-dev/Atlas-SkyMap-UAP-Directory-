@@ -32,3 +32,14 @@ form .row{display:flex;gap:1rem}button[type=submit]{margin-top:.8rem;background:
 .roadmap ul{color:var(--muted);padding-left:1.2rem}.roadmap strong{color:var(--ink)}
 footer{max-width:1200px;margin:0 auto;padding:0 1.5rem 2rem;color:var(--muted);font-size:.85rem}
 .leaflet-popup-content-wrapper{background:var(--panel2);color:var(--ink)}.leaflet-popup-tip{background:var(--panel2)}
+
+/* Live Watch (v1, Nov 14 2026) */
+.live-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem;margin-bottom:.8rem}
+.live-card{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:.9rem}
+.live-card h4{margin:0 0 .4rem;font-size:.95rem;color:var(--accent)}
+.live-body{color:var(--ink);font-size:.92rem}
+.live-src{color:var(--muted);font-size:.75rem;margin:.5rem 0 0}
+.live-alert{color:var(--government)}
+.live-note{color:var(--muted);font-size:.85rem}
+.live-stamp{color:var(--muted);font-size:.8rem}
+.live-cam img{width:100%;border-radius:8px;display:block}

@@ -18,6 +18,7 @@ let markers = new Map();
 let selectedId = null;
 
 const map = L.map("map", { worldCopyJump: true }).setView([39, -40], 2);
+window.__atlasMap = map;
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   maxZoom: 18

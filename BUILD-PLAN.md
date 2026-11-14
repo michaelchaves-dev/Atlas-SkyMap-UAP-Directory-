@@ -13,7 +13,14 @@ Status of this document: plan for the public preview launched 2026-10-28. The pr
 
 Static, no build step, Vercel-ready: interactive Leaflet sky map, 12 sourced seed entries, searchable/filterable register, record detail with correlation notes, local-only report form (Pending review), directory of established reporting channels, verification-method explainer. Purpose: something real to show, promote and link — today.
 
-## Phase 2 — Live layers (no accounts needed)
+## Phase 2 — Live layers (no accounts needed) — v1 BUILT Nov 14, 2026 (branch `atlas-live-feeds-v1`, awaiting Michael's merge approval)
+
+- `api/live.js` (Vercel serverless, edge-cached 120s) aggregates verified public feeds, all tested live Nov 14, 2026: ISS position (wheretheiss.at), CelesTrak ISS TLE, NOAA SWPC alerts + Kp + solar wind, FAA NAS Status XML, adsb.lol military ADS-B count, NOAA GOES-19 GeoColor live Earth image. OpenSky anonymous returned empty and Launch Library 2 throttled, so neither is wired in v1; AMS fireball API returned 503, so AMS is a watch link, not a feed.
+- `live.js` + Live Watch section: live cards with source + fetch time, ISS marker on the map, GOES-19 live image, and a linked directory of public cameras/feeds (NASA Live, SpaceX, GOES, CelesTrak, ADS-B Exchange, FAA advisories, AMS, Global Meteor Network, Windy Webcams). Legal rule: link out and aggregate public data APIs — never scrape or re-host streams we do not own.
+- Case File 001 (Nov 13, 2026) section + two register entries: the Florida jellyfish plume (Explained — Starship Flight 15) and the separate descending-ball report (Unresolved, pending a pinned location for an ADS-B helicopter check).
+- Still Phase 2 remainder: full SGP4 pass-checking for any entry's time/place against the full CelesTrak catalog; GOES GLM fireball layer.
+
+## Phase 2 (original plan)
 
 - CelesTrak TLE fetch + pass prediction for a selected entry's time/place; show "satellites overhead then" on the record.
 - NOAA SWPC space-weather summary for the entry date.

@@ -52,6 +52,41 @@
     </aside>
   </section>
 
+  <section class="panel" id="liveWatch">
+    <div class="panel-head">
+      <h3>Live Watch — public feeds, right now</h3>
+      <p>If something moves or launches, it shows up somewhere public first: a satellite track, an aircraft broadcast, a space-weather alert, an FAA program, or a live Earth camera. ATLAS pulls those public feeds into one place so a sighting can be checked against them for the same minutes — facts only, source named on every card. We link to streams; we do not re-host or scrape feeds we do not own.</p>
+    </div>
+    <div id="liveGrid" class="live-grid"><p class="empty">Loading live feeds…</p></div>
+    <p class="live-stamp" id="liveStamp"></p>
+    <div class="directory">
+      <a href="https://www.nasa.gov/live/" target="_blank" rel="noopener"><strong>NASA Live</strong><span>Official NASA TV, ISS views and launch coverage</span></a>
+      <a href="https://www.spacex.com/launches/" target="_blank" rel="noopener"><strong>SpaceX Launches</strong><span>Official mission pages and webcasts, including Starship</span></a>
+      <a href="https://www.star.nesdis.noaa.gov/GOES/fulldisk_band.php?sat=G19" target="_blank" rel="noopener"><strong>NOAA GOES-19</strong><span>Live full-disk Earth imagery from NOAA's geostationary satellite</span></a>
+      <a href="https://celestrak.org/satcat/search.php" target="_blank" rel="noopener"><strong>CelesTrak</strong><span>Every tracked satellite — what was overhead, by time and place</span></a>
+      <a href="https://globe.adsbexchange.com/" target="_blank" rel="noopener"><strong>ADS-B Exchange Globe</strong><span>Live aircraft broadcasts worldwide, including military aircraft that are transmitting</span></a>
+      <a href="https://www.fly.faa.gov/adv/adv_list.jsp" target="_blank" rel="noopener"><strong>FAA ATCSCC Advisories</strong><span>Ground stops and airspace advisories as the FAA issues them</span></a>
+      <a href="https://fireball.amsmeteors.org/" target="_blank" rel="noopener"><strong>AMS Fireball Reports</strong><span>American Meteor Society witness fireball reports</span></a>
+      <a href="https://globalmeteornetwork.org/" target="_blank" rel="noopener"><strong>Global Meteor Network</strong><span>Open meteor-camera network, nightly detections worldwide</span></a>
+      <a href="https://www.windy.com/webcams" target="_blank" rel="noopener"><strong>Windy Webcams</strong><span>Public webcams worldwide — a linked directory; streams stay with their owners</span></a>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h3>Case File 001 — November 13, 2026</h3>
+      <p>The night this live layer was built for. One timeline, separate events kept separate — check each sighting report from that evening against the same minutes.</p>
+    </div>
+    <ol class="method">
+      <li><strong>3:36 p.m. ET</strong> — FAA identifies radar/communications instability.</li>
+      <li><strong>~4:00 p.m. ET</strong> — Nationwide departure ground stop issued; aircraft already airborne keep landing.</li>
+      <li><strong>5:47 p.m. ET</strong> — SpaceX Starship Flight 15 launches from Starbase, Texas (pre-announced). Sunset plume — the "space jellyfish" — is visible across Florida; flight crosses the West Palm Beach area ~5:55 p.m. ET. Booster catch called off, booster splashes down in the Gulf; Ship 42 reaches orbit.</li>
+      <li><strong>Evening</strong> — Separate witness reports describe a compact glowing ball descending at an angle. That signature is not a jellyfish plume (which expands, hangs and fades high up). No location-pinned corroboration for a touchdown has been established in the public record checked so far — it stays in the register as unresolved, not explained away.</li>
+      <li><strong>8:19 p.m. ET</strong> — Formal national ground-stop lift (FAA Advisory 005); airline-specific stops clear in stages, the last at 1:27 a.m. ET Nov 14 (Chicago O'Hare, American).</li>
+    </ol>
+    <p class="live-note">Method: every report gets timestamped and pinned, then tested against ADS-B aircraft tracks, CelesTrak satellite positions and NOAA GOES data for those exact minutes. What survives those checks stays flagged unresolved.</p>
+  </section>
+
   <section class="panel">
     <div class="panel-head">
       <h3>The Register</h3>
@@ -131,7 +166,8 @@
   <section class="panel roadmap">
     <div class="panel-head"><h3>Where this goes next</h3></div>
     <ul>
-      <li><strong>Live layers</strong> — real-time satellite passes (CelesTrak) and NOAA space weather over the same map.</li>
+      <li><strong>Live layers — LIVE (v1, Nov 14, 2026)</strong> — ISS position + CelesTrak data, NOAA space weather, FAA NAS status, broadcasting military aircraft count, and a live NOAA GOES-19 Earth view, all in Live Watch above.</li>
+      <li><strong>Full satellite correlation</strong> — SGP4 pass-checking for any selected entry's exact time and place, against the full CelesTrak catalog.</li>
       <li><strong>Reviewed submissions</strong> — public reports held in a moderation queue before they join the register.</li>
       <li><strong>Observer &amp; Operator accounts</strong> — saved regions, alerts when activity is registered near you, and full correlation detail.</li>
       <li><strong>Camera network ingestion</strong> — public sky and transit cameras catalogued as watch sources, metadata first.</li>
@@ -145,5 +181,6 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="app.js"></script>
+<script src="live.js"></script>
 </body>
 </html>
